@@ -11,7 +11,7 @@ class SearchData:
     def search(self):
         global db
         db = MysqlConnector()
-        formatterr = Formatter()
+        formatter = Formatter()
         temperatura = db.get_query(get_temperatura())
         cliente = db.get_query(get_cliente())
         result_temperatura = formatter.dados_temperatura(temperatura)

@@ -37,7 +37,7 @@ class MysqlConnector:
         except mysql.connector.Error as e:
             raise QueryError(f"Error in query: {e}")
         finally:
-            self.desconect()
+           cursor.close()
     def set_query(self, query):
         if not self.__connection.is_connected or self.__connection.is_connected is None:
             self.__connection = self.__connect()
@@ -48,4 +48,4 @@ class MysqlConnector:
         except mysql.connector.Error as e:
             raise QueryError(f"Error in query: {e}")
         finally:
-            self.desconect()
+            cursor.close()

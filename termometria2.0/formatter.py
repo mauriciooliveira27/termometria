@@ -29,7 +29,11 @@ class Formatter:
                 'ID_cliente': item['id_cliente'],
                 'ID_planta':item['id_planta'],
                 'ID_equipamento':item['id_equipamento'],
-                'ID_placa':item['id_placa']
+                'ID_placa':item['id_placa'],
+                'superaquecimento':     100,
+                'nivel_percentual_silo': 100,
+                'total_armazenado_ton': 1000000,
+                'Total_armazenado_sacas': 18.750
             }
 
             dados_json = json.dumps(dados_cliente)
