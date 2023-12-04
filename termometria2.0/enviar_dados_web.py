@@ -3,7 +3,7 @@ import json
 import time
 import http.client
 from formatter import Formatter
-from query import *
+from query_database import *
 from database import MysqlConnector
 
 class SearchData:
