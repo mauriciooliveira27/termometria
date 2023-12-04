@@ -5,18 +5,20 @@ class QueryError(Exception):
 
 class MysqlConnector:
     def __init__(self):
-        try:
-            self.__connection = mysql.connector.connect(
-                host="192.168.15.33",
-                user="user",
-                password="mauricio",
-                db="TESTE2"
-            )
-            if self.__connection.is_connected():
-                print("Connected.")
-        except mysql.connector.Error as e:
-            print(f"Connection error: {e}")
-            raise
+        while True:
+            try:
+                self.__connection = mysql.connector.connect(
+                    host="192.168.15.33",
+                    user="user",
+                    password="mauricio",
+                    db="TESTE2"
+                )
+                if self.__connection.is_connected():
+                    print("Connected.")
+                    break
+            except mysql.connector.Error as e:
+                print(f"Connection error: {e}")
+                raise
 
     
     def __connect(self):
