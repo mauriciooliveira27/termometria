@@ -8,8 +8,8 @@ class MysqlConnector:
         while True:
             try:
                 self.__connection = mysql.connector.connect(
-                    host="192.168.15.50",
-                    user="scada",
+                    host="localhost",
+                    user="leitor_termo",
                     password="termometria",
                     db="Termometria"
                 )
