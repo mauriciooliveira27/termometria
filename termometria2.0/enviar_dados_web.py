@@ -2,7 +2,7 @@ from typing import Type
 import json
 import time
 import http.client
-from formatter import Formatter
+from formatter_json import Formatter
 from query_database import *
 from database import MysqlConnector
 
