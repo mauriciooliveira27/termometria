@@ -70,7 +70,7 @@ class Main:
 
     def __init__(self):
         self.search_data = SearchData()
-        self.request = Request('api.tisinapse.com.br','/publico/integracao/unidade-armazenamento/leitura-temperaturas')
+        self.request = Request('api.sinapse.com','/publico/integracao/unidade-armazenamento/leitura-temperaturas')
         self.response = Response()
         self.erros = 0
         
