@@ -1,6 +1,6 @@
 
 def get_temperatura():
-    return "SELECT * FROM registro_instalacao WHERE integracao is null ORDER BY codigo DESC LIMIT 11;"
+    return "SELECT * FROM registro_instalacao WHERE  codigo = 2910;"
 
 def get_cliente():
     return "SELECT ConfigInstalacao.id_cliente, ConfigInstalacao.id_planta, ConfigInstalacao.id_equipamento, ConfigInstalacao.id_placa FROM ConfigInstalacao;" 
