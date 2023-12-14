@@ -1,18 +1,18 @@
 import json 
 
 class Formatter:
-    sensores = {}
-    print(sensores)
+    # sensores = {}
+    # print(sensores)
     #método formata os dados da temperatura
     def dados_temperatura(self, temperaturas):
         
         self.temperaturas = temperaturas
-        print(self.sensores)
+        # print(self.sensores)
         temperatura = []
         
 
         for item in temperaturas:
-            self.sensores = item['temperaturas']
+            # self.sensores = item['temperaturas']
             #deixando data.time em formato de strings
             data_string = item['data'].strftime("%Y-%m-%d %H:%M:%S")
             #formato para chave/valor
@@ -32,32 +32,36 @@ class Formatter:
     def dados_cliente(self, dados_cliente):
 
 
-        self.sensores = json.loads(self.sensores)
+        # self.sensores = json.loads(self.sensores)
 
-        TOTAL_ARMAZENAMENTO = 300000
+        # TOTAL_ARMAZENAMENTO = 300000
         
-        SACA_KG = 60
-        total_sensor = [valor for chave,valor in self.sensores.items()]
-        temp_silo = sum(float(valor) for chave,valor in self.sensores.items())
-        media_silo = temp_silo / len(total_sensor)
+        # SACA_KG = 60
+        # total_sensor = [valor for chave,valor in self.sensores.items()]
+        # temp_silo = sum(float(valor) for chave,valor in self.sensores.items())
+        # media_silo = temp_silo / len(total_sensor)
 
         
-        filtrado = {chave: valor for chave,valor in self.sensores.items() if chave.startswith("Ch1S")}
-        tem_grao = {chave: valor for chave , valor in filtrado.items() if valor < '29.00'}
+        # filtrado = {chave: valor for chave,valor in self.sensores.items() if chave.startswith("Ch1S")}
+        # tem_grao = {chave: valor for chave , valor in filtrado.items() if valor < '29.00'}
 
-        total_sensores = len(filtrado)
-        qntd_sensor = len(tem_grao) * 100
+        # total_sensores = len(filtrado)
+        # qntd_sensor = len(tem_grao) * 100
 
-        percentual_silo = (total_sensores * qntd_sensor) / 100
-        qnt_armazenamento = (percentual_silo * TOTAL_ARMAZENAMENTO) / 100
+        # percentual_silo = (total_sensores * qntd_sensor) / 100
+        # qnt_armazenamento = (percentual_silo * TOTAL_ARMAZENAMENTO) / 100
 
-        total_saca = qnt_armazenamento / SACA_KG
+        # total_saca = qnt_armazenamento / SACA_KG
         
-        saca_por_ton  =  (SACA_KG * total_saca) / 1000
+        # saca_por_ton  =  (SACA_KG * total_saca) / 1000
 
-        print(f'TOTAL_TON: {saca_por_ton:.0f} TONELADAS')
-        print(f'PERCENTUAL_SACA: {total_saca:.0f} MIL')
-        print(f'porcentual_armazenamento: {percentual_silo:.0f} MIL')
+        # print(f'TOTAL_TON: {saca_por_ton:.0f} TONELADAS')
+        # print(f'PERCENTUAL_SACA: {total_saca:.0f} MIL')
+        # print(f'porcentual_armazenamento: {percentual_silo:.0f} MIL')
+        media_silo = 0.0
+        percentual_silo = 0.0
+        saca_por_ton = 0.0
+        total_saca = 0.0
         for item in dados_cliente:
             dados_cliente = {
                 'ID_cliente': item['id_cliente'],
@@ -74,18 +78,6 @@ class Formatter:
             dados_json2 = json.loads(dados_json)
             return dados_json2
         
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
