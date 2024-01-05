@@ -1,8 +1,8 @@
 import json 
 
+import numpy as np
+
 class Formatter:
-    # sensores = {}
-    # print(sensores)
     #método formata os dados da temperatura
     def dados_temperatura(self, temperaturas):
         
@@ -10,9 +10,10 @@ class Formatter:
         # print(self.sensores)
         temperatura = []
         
-
+        
         for item in temperaturas:
-            # self.sensores = item['temperaturas']
+            self.sensores = json.loads(item['temperaturas'])
+            #print(self.sensores.__class__)
             #deixando data.time em formato de strings
             data_string = item['data'].strftime("%Y-%m-%d %H:%M:%S")
             #formato para chave/valor
@@ -22,7 +23,6 @@ class Formatter:
                 'Data': data_string,
                 'Config_fisica':json.loads(item['config_fisica'])
             }
-
             dados_json = json.dumps(dados_temperatura)
             dados_json2 = json.loads(dados_json)
             temperatura.append(dados_json2)
@@ -30,16 +30,20 @@ class Formatter:
         
     #método formata os dados do cliente
     def dados_cliente(self, dados_cliente):
-
-
-        # self.sensores = json.loads(self.sensores)
-
         # TOTAL_ARMAZENAMENTO = 300000
-        
         # SACA_KG = 60
+
+        # temp_sensores = [valor for chave , valor in self.sensores.items() if self.sensores != None else None]
+        # print(temp_sensores)
+
+
+
+
+        
         # total_sensor = [valor for chave,valor in self.sensores.items()]
         # temp_silo = sum(float(valor) for chave,valor in self.sensores.items())
         # media_silo = temp_silo / len(total_sensor)
+        # print(f'{media_silo:.0f}')
 
         
         # filtrado = {chave: valor for chave,valor in self.sensores.items() if chave.startswith("Ch1S")}
@@ -58,20 +62,17 @@ class Formatter:
         # print(f'TOTAL_TON: {saca_por_ton:.0f} TONELADAS')
         # print(f'PERCENTUAL_SACA: {total_saca:.0f} MIL')
         # print(f'porcentual_armazenamento: {percentual_silo:.0f} MIL')
-        media_silo = 0.0
-        percentual_silo = 0.0
-        saca_por_ton = 0.0
-        total_saca = 0.0
+       
         for item in dados_cliente:
             dados_cliente = {
                 'ID_cliente': item['id_cliente'],
                 'ID_planta':item['id_planta'],
                 'ID_equipamento':item['id_equipamento'],
                 'ID_placa':item['id_placa'],
-                'superaquecimento':  f'{media_silo:.0f}',
-                'nivel_percentual_silo': f'{percentual_silo:.0f}',
-                'total_armazenado_ton': f'{saca_por_ton:.0f}',
-                'Total_armazenado_sacas': f'{total_saca:.0f}'
+                'superaquecimento':  0,
+                'nivel_percentual_silo': 0,
+                'total_armazenado_ton': 0,
+                'Total_armazenado_sacas': 0
             }
 
             dados_json = json.dumps(dados_cliente)

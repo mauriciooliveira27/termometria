@@ -8,10 +8,10 @@ class MysqlConnector:
         while True:
             try:
                 self.__connection = mysql.connector.connect(
-                    host="localhost",
-                    user="leitor_termo",
-                    password="termometria",
-                    db="Termometria"
+                    host="192.168.237.71",
+                    user="mauricio",
+                    password="mauricio",
+                    db="TESTE2"
                 )
                 if self.__connection.is_connected():
                     print("Connected.")
@@ -23,10 +23,12 @@ class MysqlConnector:
     
     def __connect(self):
         return self.__connection
+    
 
     def desconect(self):
         if self.__connection.is_connected():
             self.__connection.close()
+
 
     def get_query(self, query):
         if not self.__connection.is_connected or self.__connection.is_connected is None:
@@ -40,6 +42,8 @@ class MysqlConnector:
             raise QueryError(f"Error in query: {e}")
         finally:
            cursor.close()
+
+           
     def set_query(self, query):
         if not self.__connection.is_connected or self.__connection.is_connected is None:
             self.__connection = self.__connect()
