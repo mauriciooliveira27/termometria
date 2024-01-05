@@ -1,34 +1,28 @@
 import json 
 
-import numpy as np
-
 class Formatter:
-    #método formata os dados da temperatura
+    
     def dados_temperatura(self, temperaturas):
         
-        self.temperaturas = temperaturas
-        # print(self.sensores)
-        temperatura = []
-        
+        self.temperaturas           =       temperaturas
+        temperatura                 =       []
         
         for item in temperaturas:
-            self.sensores = json.loads(item['temperaturas'])
-            #print(self.sensores.__class__)
-            #deixando data.time em formato de strings
-            data_string = item['data'].strftime("%Y-%m-%d %H:%M:%S")
-            #formato para chave/valor
-            dados_temperatura = {
-                'Temperaturas': json.loads(item['temperaturas']),
-                'Nome_Silo' : item['nome'],
-                'Data': data_string,
-                'Config_fisica':json.loads(item['config_fisica'])
-            }
-            dados_json = json.dumps(dados_temperatura)
-            dados_json2 = json.loads(dados_json)
-            temperatura.append(dados_json2)
+                self.sensores       =       json.loads(item['temperaturas'])
+                data_string         =       item['data'].strftime("%Y-%m-%d %H:%M:%S")
+                dados_temperatura   =   {
+                                            'Temperaturas': json.loads(item['temperaturas']),
+                                            'Nome_Silo' : item['nome'],
+                                            'Data': data_string,
+                                            'Config_fisica':json.loads(item['config_fisica'])
+                                        }
+                
+                dados_json          =       json.dumps(dados_temperatura)
+                dados_json2         =       json.loads(dados_json)
+                temperatura.append(dados_json2)
         return temperatura
         
-    #método formata os dados do cliente
+
     def dados_cliente(self, dados_cliente):
         # TOTAL_ARMAZENAMENTO = 300000
         # SACA_KG = 60
@@ -64,22 +58,21 @@ class Formatter:
         # print(f'porcentual_armazenamento: {percentual_silo:.0f} MIL')
        
         for item in dados_cliente:
-            dados_cliente = {
-                'ID_cliente': item['id_cliente'],
-                'ID_planta':item['id_planta'],
-                'ID_equipamento':item['id_equipamento'],
-                'ID_placa':item['id_placa'],
-                'superaquecimento':  0,
-                'nivel_percentual_silo': 0,
-                'total_armazenado_ton': 0,
-                'Total_armazenado_sacas': 0
-            }
+            dados_cliente       =   {
+                                        'ID_cliente'            :   item['id_cliente'],
+                                        'ID_planta'             :   item['id_planta'],
+                                        'ID_equipamento'        :   item['id_equipamento'],
+                                        'ID_placa'              :   item['id_placa'],
+                                        'superaquecimento'      :   0,
+                                        'nivel_percentual_silo' :   0,
+                                        'total_armazenado_ton'  :   0,
+                                        'Total_armazenado_sacas':   0
+                                    }
 
-            dados_json = json.dumps(dados_cliente)
-            dados_json2 = json.loads(dados_json)
+            dados_json          =       json.dumps(dados_cliente)
+            dados_json2         =       json.loads(dados_json)
+
             return dados_json2
         
 
 
-
-        #chaves_desejadas = [chave for chave,valor in self.sensores.items() if chave.startswith("Ch1S")]

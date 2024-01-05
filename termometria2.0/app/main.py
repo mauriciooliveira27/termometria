@@ -11,27 +11,24 @@ erros = 0
 
 
 class SearchData:
-    
+
     def search(self):
                     
                     global db
-
                     db                      =       MysqlConnector()
                     formatter               =       Formatter()
                     temperatura             =       db.get_query(get_temperatura())
                     cliente                 =       db.get_query(get_cliente())
                     result_temperatura      =       formatter.dados_temperatura(temperatura)
                     result_cliente          =       formatter.dados_cliente(cliente)
-
+                    
                     return result_temperatura , result_cliente
-
 
 
 
 class Request:
 
     def __init__(self,host,endpoint):
-        
                     self.host           =       host
                     self.endpoint       =       endpoint
 
@@ -39,7 +36,6 @@ class Request:
 
     def Post(self, dados):
                     global conn
-
                     conn                =       http.client.HTTPSConnection(self.host)
                     dados_enviar        =       json.dumps(dados)
                     conn.request('POST', self.endpoint, dados_enviar, headers={'Content-Type':'application/json'})
@@ -53,7 +49,7 @@ class Response:
         global erros
         while erros <= tentativas:
             if response.status      ==      202:
-                
+
                 self.datas          =       datas
                 objeto_resposta     =       json.loads(response.read().decode('utf-8'))
                 data_formatada      =       [' '.join(item) for item in objeto_resposta]
@@ -100,10 +96,7 @@ error_mapping = {
 
 class Main:
 
-
     def __init__(self):
-                                    
-
                         self.search_data        =    SearchData()
                         self.request            =    Request('api.sinapsesolucoes.com', '/publico/integracao/unidade-armazenamento/leitura-temperaturas')
                         self.response           =    Response()
@@ -111,7 +104,6 @@ class Main:
                         self.dados_temperatura  =    []
                         self.datas              =    []
                         #print("selferro = 0")
-
 
 
     def process_sending_data(self): 
@@ -132,11 +124,9 @@ class Main:
                             break
 
                         except ( 
-                            
                                 http.client.HTTPException, 
                                 ConnectionError, TimeoutError, 
                                 json.JSONDecodeError
-
                                 ) as e:
                             
                             # time.sleep(30)
