@@ -7,6 +7,7 @@ def get_cliente():
 
 def update(data):
     return f"UPDATE registro_instalacao SET integracao = NOW() WHERE data IN ({data});"
+
 #erro de solicitação
 
 def error_status404():
