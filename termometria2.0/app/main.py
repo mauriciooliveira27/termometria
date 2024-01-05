@@ -61,7 +61,9 @@ class Response:
                     break
                 
                 else:
+                    db.set_query(update_if_erro())
                     break
+                
             elif response.status == 500:
                 time.sleep(30)
                 print("Erro 500 encontrado . Obtendo o conteúdo do erro...")
@@ -134,7 +136,7 @@ class Main:
                             self.erros += 1
 
                         except Exception as e:
-                            db.set_query(error_except_exception(e))
+                            db.set_query(error_except_exception())
                             #print('erros 4')
                             # time.sleep(30)
                             self.erros += 1

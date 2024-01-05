@@ -9,8 +9,8 @@ class MysqlConnector:
             try:
                 self.__connection = mysql.connector.connect(
 
-                                                                host="localhost",
-                                                                user="leitor_termo",
+                                                                host="192.168.15.43",
+                                                                user="scada",
                                                                 password="termometria",
                                                                 db="Termometria"
                                                             )
